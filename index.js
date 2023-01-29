@@ -16,7 +16,7 @@ import { createPost } from './controllers/posts.js';
 import { verifyToken } from './middleware/auth.js';
 import User from './models/User.js';
 import Post from './models/Post.js';
-import { users, posts } from './data/index';
+import { users, posts } from './data/index.js';
 
 
 /* CONFIGURATIONS */
@@ -63,4 +63,9 @@ mongoose
     useUnifiedTopology: true,
   }).then(()=>{
     app.listen(PORT, ()=> console.log(`Server Port: ${PORT}`));
+    
+    // Load dummy data ONCE
+    // User.insertMany(users);
+    // Post.insertMany(posts);
+
   }).catch((error) => console.log(`${error} did not connect`));
